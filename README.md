@@ -43,9 +43,9 @@ SuperStore's database consists of four tables with a total of approximately **[X
 
 *(Insert ERD image here — recommended tool: [dbdiagram.io](https://dbdiagram.io))*
 
-```
+
 ![SuperStore ERD](images/superstore_erd.png)
-```
+
 
 Prior to analysis, data quality checks were performed to identify nulls, duplicate order IDs, and referential integrity between tables. *(Link to data quality notes or Python/SQL script if applicable.)*
 
