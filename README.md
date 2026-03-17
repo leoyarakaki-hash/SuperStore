@@ -52,10 +52,6 @@ SuperStore's database consists of four tables with a total of approximately **10
 
 Between 2014 and 2017, SuperStore processed approximately **10.000 orders** across its store network. The RFM segmentation revealed that SuperStore has great growth potential with 40% of their customers being classified as Potential Loyalist. Cohort retention data shows that first-month drop-off is steep across all acquisition cohorts, with only a fraction of customers returning. On the product side, **Technology products** consistently leads in both revenue and profit, while the **Furniture** category has a very low profit margin.
 
-```
-![Executive Summary Dashboard](images/exec_summary.png)
-```
-
 ---
 
 ## Insights Deep-Dive
