@@ -16,9 +16,12 @@
 
 ## Project Background
 
-SuperStore is a multi-location supermarket chain operating across several physical stores, offering a wide range of food and consumer goods. Founded with a focus on accessible retail, the company serves a diverse customer base and competes primarily on product variety, store availability, and customer loyalty.
+SuperStore is a multi-location retailer chain operating across several physical stores in the US, offering a wide range consumer goods. Founded with a focus on accessible retail, the company serves a diverse customer base and competes primarily on product variety, store availability, and customer loyalty.
 
-Despite having access to transactional data, SuperStore's management team had historically relied on isolated spreadsheets to track performance — with no unified view across stores, products, or customer segments. A data team was assembled to change that. This project represents an end-to-end analysis of SuperStore's order data from **2014 to 2017**, answering the core business question: **which customers are most valuable, and which are at risk of churning?**
+Despite having access to transactional data, SuperStore's management team had historically relied on isolated spreadsheets to track performance. This project represents an end-to-end analysis of SuperStore's order data from **2014 to 2017**, answering the core business questions: 
+- **How quickly do new customers disengage?**
+- **Which customers are most valuable, and which are at risk of churning?**
+- **Which stores and products drive the most revenue?**
 
 Insights and recommendations are provided across three key areas:
 
@@ -32,7 +35,7 @@ The Excel workbook containing all analyses and visualizations can be downloaded 
 
 ## Data Structure & ERD
 
-SuperStore's database consists of four tables with a total of approximately **[X,XXX] records** spanning 2014–2017.
+SuperStore's database consists of four tables with a total of approximately **10.000 records** spanning 2014–2017.
 
 | Table | Description |
 |---|---|
@@ -41,21 +44,13 @@ SuperStore's database consists of four tables with a total of approximately **[X
 | `products.csv` | Attributes of products sold across stores (category, name, price) |
 | `location.csv` | Store location data where purchases were made |
 
-*(Insert ERD image here — recommended tool: [dbdiagram.io](https://dbdiagram.io))*
-
-
 ![SuperStore ERD](images/superstore_erd.png)
-
-
-Prior to analysis, data quality checks were performed to identify nulls, duplicate order IDs, and referential integrity between tables. *(Link to data quality notes or Python/SQL script if applicable.)*
 
 ---
 
 ## Executive Summary
 
-Between 2014 and 2017, SuperStore processed approximately **[X,XXX] orders** across its store network. The RFM segmentation revealed that a small portion of customers — Champions and Loyal Customers — drive a disproportionate share of revenue, while a significant segment of one-time or lapsed buyers represents a material churn risk. Cohort retention data shows that first-month drop-off is steep across all acquisition cohorts, with only a fraction of customers returning beyond Month 3. On the product side, **[Top Category]** consistently leads in both order volume and revenue, while certain store locations significantly outperform others in customer lifetime value.
-
-*(Insert overview dashboard screenshot here)*
+Between 2014 and 2017, SuperStore processed approximately **10.000 orders** across its store network. The RFM segmentation revealed that SuperStore has great growth potential with 40% of their customers being classified as Potential Loyalist. Cohort retention data shows that first-month drop-off is steep across all acquisition cohorts, with only a fraction of customers returning. On the product side, **Technology products** consistently leads in both revenue and profit, while the **Furniture** category has a very low profit margin.
 
 ```
 ![Executive Summary Dashboard](images/exec_summary.png)
@@ -67,43 +62,44 @@ Between 2014 and 2017, SuperStore processed approximately **[X,XXX] orders** acr
 
 ### Cohort Analysis
 
-- **Retention drops sharply after the first month.** Across all acquisition cohorts from 2014–2017, average Month 1 retention sits at approximately **[X%]**, declining to **[X%]** by Month 3. This pattern is consistent regardless of the cohort's acquisition period.
-- **The [Year] cohort shows the strongest long-term retention**, maintaining **[X%]** retention at Month 6 — roughly **[X]pp above** the cohort average. This may be tied to [seasonal promotions / store expansion / product launches] in that period.
-- **No cohort fully recovers after a drop.** Once customers lapse beyond Month 4, re-engagement is rare, suggesting the window for retention intervention is narrow.
-- **[Most recent cohort]** is too early to draw long-term conclusions, but its early retention curve is [tracking above / below] prior cohorts.
+- **Retention drops sharply after the first month.** Across all acquisition cohorts from 2014–2017, average Month 1 retention sits at approximately **6%**. This pattern is consistent regardless of the cohort's acquisition period. Revealing that the store is not leveraging seasonal purchases mainly in December during the holiday season.
+- A closer look to the Cohort data also reveals that SuperStore has not been able to consistenly acquire new clients resulting in over 90% of the sales of 2017 being made by recurring clients.  
 
-*(Insert cohort heatmap here)*
+![Cohort Retention Heatmap](images/cohort_heatmap_2014.png)
 
-```
-![Cohort Retention Heatmap](images/cohort_heatmap.png)
-```
+![Cohort Retention Heatmap](images/cohort_recurring.png)
 
 ---
 
 ### RFM Analysis
 
-RFM scores were calculated by ranking each customer on three dimensions: **Recency** (days since last purchase), **Frequency** (total number of orders), and **Monetary Value** (total spend). Customers were then grouped into segments based on combined score thresholds.
+RFM scores were calculated by ranking each customer on three dimensions: **Recency** (days since last purchase), **Frequency** (total number of orders), and **Monetary Value** (total spend). Customers were then grouped into segments based on combined score thresholds. The reference used to determine the segments can be found here: https://www.putler.com/rfm-analysis/.
 
-| Segment | Description |
-|---|---|
-| **Champions** | Bought recently, buy often, and spend the most |
-| **Loyal Customers** | Regular buyers with strong monetary value |
-| **Potential Loyalists** | Recent customers with average frequency |
-| **At Risk** | Previously frequent buyers who haven't purchased recently |
-| **Lost** | Low recency, low frequency, low spend — likely churned |
+| Customer Segment | Description | Actionable Tip |
+|---|---|---|
+| **Champions** | Bought recently, buy often, and spend the most | Reward them. Great candidates for early product launches and brand promotion |
+| **Loyal Customers** | Spend consistently and respond well to promotions | Upsell higher-value products. Ask for reviews. Keep them engaged |
+| **Potential Loyalists** | Recent customers who bought more than once and spent a decent amount | Offer a loyalty program or membership. Recommend complementary products |
+| **Recent Customers** | Bought most recently but not frequently | Provide onboarding support and start building the relationship early |
+| **Promising** | Recent shoppers who haven't spent much yet | Build brand awareness and offer free trials or introductory deals |
+| **Needing Attention** | Above-average R, F, and M values but haven't purchased very recently | Use limited-time offers. Reactivate with recommendations based on past purchases |
+| **About To Sleep** | Below-average recency, frequency, and monetary values — at risk of going cold | Share valuable content, recommend popular products, and reconnect with discounts |
+| **At Risk** | Spent big and bought often, but haven't returned in a long time | Send personalized re-engagement emails. Offer renewals and helpful resources |
+| **Can't Lose Them** | Made the largest purchases frequently, but haven't returned in a long time | Win back with renewals or new products. Don't let them go to competitors |
+| **Hibernating** | Last purchase was long ago, low spend, and low order count | Offer relevant products and special discounts. Recreate brand value |
+| **Lost** | Lowest scores across recency, frequency, and monetary value | Attempt a reach-out campaign. If no response, deprioritize to save resources |
 
 Key findings:
 
-- **Champions and Loyal Customers account for approximately [X%] of total revenue** despite representing only [X%] of the customer base. These segments are the primary revenue engine and warrant proactive retention efforts.
-- **The At-Risk segment contains [X] customers** who were once frequent buyers but have not placed an order in the past **[X] months**. Their average historical spend of **$[X]** makes them high-priority re-engagement targets.
-- **[X%] of customers fall into the Lost segment**, having made only one or two purchases years ago with no subsequent activity. Win-back campaigns for this group would require significant incentive to be cost-effective.
-- **Potential Loyalists** represent the clearest growth opportunity — they have recent purchase dates and mid-range frequency, meaning a targeted promotion could convert them into Loyal Customers.
+- **Loyal Customers account for approximately 47% of total revenue** despite representing only 27% of the customer base. This segment is the primary revenue engine and warrant proactive retention efforts.
+- **Potential Loyalist segment contains 40% of all customers**, this represents a great opportunity for the store to increase their revenue if they are able to turn them into loyal customers.
+- **8% of customers fall into the Can't Lose Them segment**, being the third revenue stream representing over 10%. 
+- **Recent customers represent only 2% of all customers** - there is clar potential to increase the number of new customers.
 
-*(Insert RFM segment bar chart or scatter plot here)*
 
-```
 ![RFM Segmentation Chart](images/rfm_segments.png)
-```
+
+![RFM Segmentation Chart](images/rfm_segments_revenue.png)
 
 ---
 
