@@ -105,42 +105,34 @@ Key findings:
 
 ### Store & Product Rank
 
-- **Store [X] leads in total revenue**, generating **$[X]** over the analysis period — approximately **[X%] above** the network average. This store also has the highest average order value (AOV) at **$[X]**.
-- **Store [X] underperforms significantly in both order count and revenue**, despite being located in a [comparable / higher-traffic] area. This suggests possible operational or assortment issues worth investigating.
-- **[Top Product Category]** is the highest-grossing category, contributing **[X%] of total revenue**. Within this category, **[Top Product]** alone accounts for **[X%]** of category sales.
-- **[Lowest Category]** generates the fewest orders and lowest revenue per order, raising questions about shelf space allocation and whether the category is aligned with local customer demand.
-- Among the top 10 products by revenue, **[X] products appear in the top-performing stores' order data consistently**, suggesting a correlation between store performance and product mix rather than foot traffic alone.
+- **Stores in California leads in total revenue**, generating almost **20%** of the revenue. Which is aligned with the population size, being the most populated State in the US.
+- **Stores in Florida underperforms significantly**, given it is the third most populated State and account for less than 4% of total revenue. 
+- **Technology products** are the highest-grossing category, contributing **36% of total revenue and over 50% of total profit**. 
+- **Furniture sales** generates 32% of total revenue but **only around 6% of total profit**, with some products even having negative profit margins.
 
-*(Insert store rank table and product revenue bar chart here)*
+![Store Rank](images/store_rank.png)
 
-```
-![Store & Product Rank](images/store_product_rank.png)
-```
+![Product Rank](images/product_rank.png)
 
 ---
 
 ## Recommendations
 
 ### Customer Retention (Marketing & CRM Team)
-- **Launch a targeted re-engagement campaign for the At-Risk segment.** Given their historical spend, even recovering [X%] of this group could represent $[X] in recaptured revenue. Personalized discount offers or "we miss you" messaging tied to their most purchased category are the recommended starting point.
-- **Invest in converting Potential Loyalists.** This segment already exhibits positive purchase behavior. A loyalty incentive — such as a points multiplier or a threshold discount on their next order — could accelerate their progression to the Loyal Customer tier.
-- **Protect Champions with exclusive benefits.** This group is small but disproportionately valuable. Early access to new products, a VIP tier, or dedicated service touchpoints can reduce the risk of losing them to competitors.
+- **Invest in converting Potential Loyalists.** This segment already exhibits positive purchase behavior and represent 40% of total customers. A loyalty incentive, such as a points multiplier or a threshold discount on their next order, could accelerate their progression to the Loyal Customer segment. This progression could contribute significantly to the financial health of the SuperStore.
+- **Protect Can't Lose Them customers with exclusive benefits.** This group accounts for 10% of total revenue representing the third most important segment in that metric. Early access to new products or dedicated service can reduce the risk of losing them to competitors.
 
 ### Store Operations (Regional Management Team)
-- **Investigate the underperforming stores** identified in the Store Rank analysis. A qualitative review of their product assortment, staffing, and local demographics relative to top-performing locations may reveal correctable gaps.
-- **Replicate the product mix of top-performing stores** where feasible. The correlation between high-revenue stores and specific product categories suggests that assortment strategy, not just location, is driving performance differences.
+- **Investigate the underperforming stores in Florida**. A qualitative review of their product assortment, staffing, and local demographics relative to top-performing locations may reveal correctable gaps.
 
 ### Product & Merchandising (Category Management Team)
-- **Review the lowest-performing product categories** for potential reallocation of shelf space. If a category consistently underperforms across multiple stores, demand may not justify its current footprint.
-- **Double down on the top product category** by ensuring consistent availability and exploring adjacent upsell opportunities (e.g., bundling frequently co-purchased items).
+- **Review the Furniture product categories**. Furniture products generally occupy significant square footage of a store and with low, sometimes even negative, profit margins the Furniture products need a new source. Considering it still generates over 30% of total revenue it is still worth the effort to keep it in store instead of eliminating it completely.
+- **Double down on the Technology category** by ensuring consistent availability and exploring adjacent upsell opportunities (e.g., providing repair services, extended guarantee or bundling products that are commonly bought together).
 
 ---
 
 ## Assumptions & Caveats
 
-- **Cohort assignment is based on first order date.** Customers are assigned to the cohort of their earliest recorded purchase. If historical data is incomplete (e.g., purchases prior to 2014 exist but are not captured), some customers may be misclassified as new when they are in fact returning.
-- **RFM thresholds are relative, not absolute.** Segment boundaries were defined using quantile-based scoring within this dataset. Scores are not comparable to external benchmarks or other datasets.
-- **"Monetary" in RFM reflects total revenue, not profit.** Gross margin data was not available; high-spend customers may not necessarily be the most profitable if they purchase lower-margin products.
-- **Location data assumed to be accurate.** No geographic validation was performed on the `location.csv` file. Store-level analysis assumes each order is correctly attributed to its store of origin.
-- **The dataset ends in 2017.** Any trends observed — particularly in cohort retention or store performance — may not reflect current business conditions. This analysis is intended as a historical diagnostic, not a real-time operational tool.
-- **Duplicate records, if any, were removed prior to analysis.** *(Update this note based on what you actually found during data cleaning.)*
+- **Cohort assignment is based on first order date.** Customers are assigned to the cohort of their earliest recorded purchase. 
+- **RFM thresholds are relative, not absolute.** Segment boundaries were defined using quantile-based scoring within this dataset. 
+- **"Monetary" in RFM reflects total revenue, not profit.** 
